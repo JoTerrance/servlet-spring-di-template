@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import connection.Gestionadora;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,6 +23,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class WelComeServlet extends HttpServlet{
 	@Autowired
 	public Gestionadora gestionador;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+		super.init(config);
+	}
 
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
