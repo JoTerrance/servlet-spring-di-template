@@ -13,6 +13,5 @@
 		<span>dni:</span> <input type="text" name="dni"> <br />
 		<input type="submit">
 	</form>
-	<a href="Listado.jsp">Listado</a>
 </body>
 </html>

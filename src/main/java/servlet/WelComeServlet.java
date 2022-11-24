@@ -2,12 +2,12 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import connection.Gestionadora;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,8 +17,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/welcome")
 public class WelComeServlet extends HttpServlet{
-private String jdbcUrl = "jdbc:h2:file:~/testdb";
-
+	@autowired
+	public Gestionadora gestionador;
 
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,13 +28,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	System.out.println(req.getParameter("dni"));
 	
 	Connection conn;
-		try {
-			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection(jdbcUrl , "sa", "");
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
+	conn = gestionador.createConnection();
 		PreparedStatement preparedStatement = null;
 		try {
 			
@@ -85,4 +79,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/fin.jsp");
 	dispatcher.forward(req, resp);
 }
+
+
+
 }
