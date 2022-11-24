@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GestionarConexionH2 implements Gestionadora {
-	private String jdbcUrl = "jdbc:h2:file:~/testdb";
+	private String jdbcUrl = "jdbc:h2:file:./src/main/resources/mydatabase";
 	@Override
 	public Connection createConnection() {
 		Connection conn;

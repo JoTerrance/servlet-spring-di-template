@@ -42,7 +42,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 		PreparedStatement preparedStatement = null;
 		try {
 			
-			preparedStatement = conn.prepareStatement("CREATE TABLE IF NOT EXISTS USER (nombre VARCHAR(100) )");
+			preparedStatement = conn.prepareStatement("CREATE TABLE IF NOT EXISTS USER( nombre VARCHAR(100) )");
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			preparedStatement = conn.prepareStatement("INSERT INTO USER VALUES ?");
