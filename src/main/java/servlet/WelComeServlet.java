@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import connection.Gestionadora;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/welcome")
 public class WelComeServlet extends HttpServlet{
-	@autowired
+	@Autowired
 	public Gestionadora gestionador;
 
 @Override
