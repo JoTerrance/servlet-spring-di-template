@@ -42,15 +42,15 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 		PreparedStatement preparedStatement = null;
 		try {
 			
-			preparedStatement = conn.prepareStatement("CREATE TABLE IF NOT EXISTS USER( nombre VARCHAR(100) )");
+			preparedStatement = conn.prepareStatement("CREATE TABLE IF NOT EXISTS USUARIO( nombre VARCHAR(100) )");
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
-			preparedStatement = conn.prepareStatement("INSERT INTO USER VALUES ?");
+			preparedStatement = conn.prepareStatement("INSERT INTO USUARIO VALUES ?");
 			preparedStatement.setString(1, nombre);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			System.out.println("IMPRIMIENDO LISTADO");
-			preparedStatement = conn.prepareStatement("SELECT * FROM USER");
+			preparedStatement = conn.prepareStatement("SELECT * FROM USUARIO");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			ArrayList<String> listNombres = new ArrayList<String>();
