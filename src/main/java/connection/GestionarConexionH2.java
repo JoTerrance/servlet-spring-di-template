@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.springframework.stereotype.Component;
-
+import org.springframework.context.annotation.Profile;
+@Profile("h2")
 @Component
 public class GestionarConexionH2 implements Gestionadora {
 	private String jdbcUrl = "jdbc:h2:file:./src/main/resources/mydatabase";
