@@ -2,7 +2,8 @@ package connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+import org.springframework.context.annotation.Profile;
+@Profile("h2")
 public class GestionarConexionMysql implements Gestionadora {
 	private String jdbcUrl = "jdbc:mysql://192.168.1.50:3306/lol";
 	@Override
